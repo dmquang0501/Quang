@@ -54,17 +54,13 @@ static int test5(char** inut) {
 
 
 extern int cmd_parser(char *input_string) {
-    int status = -1;
     // parser string && assign list_agrs, cmd_item_numberd
-    int i = 0 ,k = 1, j = 0;
+    int i = 0 , j = 0;
     int len = strlen(input_string);
     char s[len];
 
     //Copie chuỗi cần làm sang chuỗi đệm s
-    for(i = 0; i < len; i++)
-        {
-            s[i] = input_string[i];
-        }
+    strcpy(s,input_string);
 
     for(i = 0; i < len; i++)
         {
@@ -86,7 +82,7 @@ extern int cmd_parser(char *input_string) {
         }
 
 
-    //Xóa phần dư và in chuỗi lệnh
+    //  In chuỗi lệnh
     for (int j = 0; j < 10; j++)
         {
             printf("agrs[%d] : %s\n", j, list_agrs[j]);
@@ -97,26 +93,18 @@ extern int cmd_parser(char *input_string) {
     // compare with command table
 /*********************************************************************************/
 
-    int maxlen = sizeof(test_cmd_table);
-    i = -1;
-    int iofend = 24;
-    while (strcmp(list_agrs[0],test_cmd_table[i].cmd) != 0)
+    i = 0;
+    while (test_cmd_table[i].cmd != 0)
         {
-            i++;
-            if( iofend >= maxlen)
-                {
-                    printf ("function not foun \n");
-                    break;
-                }
             if(strcmp(list_agrs[0],test_cmd_table[i].cmd) == 0)
                 {
-                    printf ("function is good \n");
                     test_cmd_table[i].func(list_agrs);
+                    return CMD_SUCCES;
+                    break;
                 }
-            else iofend += 24;
+            i++;
         }
 
 
-
-    return status;
+    return CMD_NOT_FOU;
 }

@@ -8,7 +8,7 @@ using namespace std;
 
 
 int main() {
-    cmd_parser((char*)"test3 3 1 245 3   4fd 5fdfd");
+    cmd_parser((char*)"test 3 1 245 3   4fd 5fdfd");
     return 0;
 }
 

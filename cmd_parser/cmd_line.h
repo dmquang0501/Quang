@@ -6,6 +6,8 @@ extern "C"
 {
 #endif
 
+#define CMD_SUCCES  0
+#define CMD_NOT_FOU 1
 
 extern int cmd_parser(char*); //user
 extern int cmd_get_number_line(); //user
